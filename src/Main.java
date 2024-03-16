@@ -1,22 +1,27 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        int[] numbers = {1,3,5,6,9,11,24};
-        getSubArrayBetween(numbers,4,10);
+        int[] numbers = {1, 3, 5, 6, 9, 11, 24};
+        int[] resultArray = getSubArrayBetween(numbers, 4, 10);
+        System.out.println(Arrays.toString(resultArray));
     }
 
     public static int[] getSubArrayBetween(int[] numbers, int start, int end) {
-        System.out.print("[");
-        boolean firstNumberPrinted = false;
+        int count = 0;
         for (int number : numbers) {
             if (number >= start && number <= end) {
-                if (firstNumberPrinted) {
-                    System.out.print(", ");
-                }
-                System.out.print(number);
-                firstNumberPrinted = true;
+                count++;
             }
         }
-        System.out.print("]");
-        return numbers;
+        int[] resultArray = new int[count];
+        int index = 0;
+        for (int number : numbers) {
+            if (number >= start && number <= end) {
+                resultArray[index] = number;
+                index++;
+            }
+        }
+        return resultArray;
     }
 }
